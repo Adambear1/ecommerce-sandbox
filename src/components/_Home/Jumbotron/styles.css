@@ -1,0 +1,9 @@
+.jumbotron{
+  background-image: url("./../../../assets/images/jumbotronImage.jpg");
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 500px; 
+  width: 100%;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
