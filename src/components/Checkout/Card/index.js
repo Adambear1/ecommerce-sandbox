@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-function Card({ title, thumbnailUrl }) {
+function Card({ title, thumbnailUrl, setAdded, added, id }) {
   return (
     <div class="card checkout-card float-right">
       <div class="row">
@@ -10,10 +10,20 @@ function Card({ title, thumbnailUrl }) {
         <div class="col-sm-7">
           <div class="card-block">
             <p>{title}</p>
-
-            <br />
-            <a href="#" class="btn btn-primary btn-sm float-right">
-              Read More
+            <a
+              href="#"
+              class="btn btn-danger btn-sm float-right"
+              id={id}
+              onClick={() => {
+                let newArr = added.filter((item) => {
+                  console.log(item);
+                  console.log(id);
+                  return +item !== +id;
+                });
+                setAdded(newArr);
+              }}
+            >
+              <i class="fas fa-trash-alt"></i>
             </a>
           </div>
         </div>
