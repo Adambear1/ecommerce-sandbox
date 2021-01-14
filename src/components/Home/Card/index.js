@@ -1,15 +1,6 @@
 import React from "react";
 import "./styles.css";
-function Card({
-  id,
-  title,
-  url,
-  thumbnailUrl,
-  status,
-  setAdded,
-  added,
-  setStatus,
-}) {
+function Card({ id, title, url, thumbnailUrl, setAdded, added }) {
   return (
     <div class="card" style={{ width: "18rem" }} key={id} id={id}>
       <a href={url} target="_blank">
@@ -22,7 +13,7 @@ function Card({
       </a>
       <div class="card-body">
         <p class="card-body">{title}</p>
-        {status ? (
+        {added.indexOf(JSON.stringify(id)) != -1 ? (
           <button
             type="button"
             class="btn btn-success"
@@ -46,7 +37,6 @@ function Card({
             }}
             onClick={(e) => {
               setAdded([...added, e.target.id]);
-              setStatus(true);
             }}
           >
             Add to Cart!

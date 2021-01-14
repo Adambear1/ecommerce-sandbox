@@ -5,7 +5,7 @@ const Pagination = ({ pageNumbers, paginate }) => {
     <nav>
       <ul className="pagination">
         {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
+          <li key={number} className="page-item" style={{ cursor: "pointer" }}>
             <a onClick={() => paginate(number)} className="page-link">
               {number}
             </a>

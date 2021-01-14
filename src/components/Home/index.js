@@ -3,12 +3,13 @@ import Container from "./Container";
 import Jumbotron from "./Jumbotron";
 import Navbar from "./Navbar";
 
-function _Home() {
+function _Home({ posts, added, setAdded }) {
+  console.log(posts);
   return (
     <>
       <Navbar />
       <Jumbotron />
-      <Container />
+      <Container posts={posts} added={added} setAdded={setAdded} />
     </>
   );
 }
