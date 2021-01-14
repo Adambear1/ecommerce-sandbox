@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-scroll";
-
+import Subscribe from "../../Subscribe";
+import "./styles.css";
 function Navbar() {
+  const [open, setOpen] = useState(false);
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
@@ -71,6 +73,10 @@ function Navbar() {
               </Link>
             </a>
           </li>
+          <li className="nav-item" onClick={() => setOpen(true)}>
+            <a className="nav-link">Subscribe</a>
+          </li>
+          <Subscribe open={open} setOpen={setOpen} />
         </ul>
       </div>
     </nav>

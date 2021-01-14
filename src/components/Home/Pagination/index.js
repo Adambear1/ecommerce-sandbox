@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const Pagination = ({ pageNumbers, paginate }) => {
   return (
-    <nav>
+    <nav class="d-flex justify-content-center">
       <ul className="pagination">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item" style={{ cursor: "pointer" }}>

@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Confetti from "react-confetti";
 import { numberToUSD } from "../../utils";
 import Card from "./Card";
 import "./styles.css";
 function Checkout({ open, setOpen, posts, added, setAdded }) {
-  const [total, setTotal] = useState([]);
+  const [complete, setComplete] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      complete === true && window.location.reload();
+    }, 5000);
+  }, [complete]);
+  let total = [];
+  const { outerHeight, outerWidth } = window;
   return (
     <>
       {open === true && (
@@ -15,29 +23,48 @@ function Checkout({ open, setOpen, posts, added, setAdded }) {
             <h3 className="mt-5">Checkout</h3>
             <p className="mt-3">
               {posts &&
-                posts.map(({ title, thumbnailUrl, price }, index) => {
-                  return (
-                    added.includes(JSON.stringify(index + 1)) && (
-                      <>
-                        <Card
-                          title={title}
-                          thumbnailUrl={thumbnailUrl}
-                          price={price}
-                          setAdded={setAdded}
-                          added={added}
-                          id={index + 1}
-                          total={total}
-                          setTotal={setTotal}
-                        />
-                      </>
-                    )
-                  );
-                })}
+                posts.map(
+                  (
+                    { title, thumbnailUrl, price, country, duration, group },
+                    index
+                  ) => {
+                    if (added.includes(JSON.stringify(index + 1))) {
+                      total.push(price);
+                      return (
+                        <>
+                          <Card
+                            title={title}
+                            thumbnailUrl={thumbnailUrl}
+                            price={price}
+                            country={country}
+                            duration={duration}
+                            group={group}
+                            setAdded={setAdded}
+                            added={added}
+                            id={index + 1}
+                          />
+                        </>
+                      );
+                    }
+                  }
+                )}
             </p>
-            <h3>Total: {JSON.stringify(total)}</h3>
-            <button type="btn" className="btn btn-success">
+            <h3>Total: {numberToUSD(total.reduce((a, b) => a + b, 0))}</h3>
+            <button
+              type="btn"
+              className="btn btn-success"
+              onClick={() => setComplete(true)}
+            >
               Order!
             </button>
+            {complete && (
+              <>
+                <Confetti width={outerWidth - 10} height={outerHeight + 100} />
+                <p className="text-success">
+                  Congrats! Your order has been completed!
+                </p>
+              </>
+            )}
           </div>
         </div>
       )}

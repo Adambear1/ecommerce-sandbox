@@ -2,3 +2,13 @@
     cursor: pointer;
     opacity: 90%
 }
+
+.card ul {
+    list-style-type: none;
+    padding: 30px
+}
+
+.card li {
+    display: inline;
+    text-decoration: none;
+}

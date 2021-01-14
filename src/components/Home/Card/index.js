@@ -1,7 +1,17 @@
 import React from "react";
 import { numberToUSD } from "../../../utils";
 import "./styles.css";
-function Card({ id, title, url, thumbnailUrl, setAdded, added, price }) {
+function Card({
+  id,
+  url,
+  thumbnailUrl,
+  setAdded,
+  added,
+  price,
+  country,
+  duration,
+  group,
+}) {
   return (
     <div class="card" style={{ width: "18rem" }} key={id} id={id}>
       <a href={url} target="_blank">
@@ -13,7 +23,30 @@ function Card({ id, title, url, thumbnailUrl, setAdded, added, price }) {
         />
       </a>
       <div class="card-body">
-        <p class="card-body">{title}</p>
+        <h4 class="card-body">{country}</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          mollis laoreet enim, sit amet ullamcorper ipsum porta in. Cras et
+          vulputate dui. Donec mattis lorem eu semper blandit. Nam nec interdum
+          mi, vitae euismod lacus. Ut iaculis tortor vel nulla condimentum, id
+          maximus ligula viverra.
+        </p>
+        <ul>
+          <li>
+            <h4>{duration}</h4>
+          </li>
+          <li>
+            {group == "Solo Travel" && (
+              <i class="fas fa-user fa-2x" title={group}></i>
+            )}
+            {group == "Pair Travel" && (
+              <i class="fas fa-user-friends fa-2x" title={group}></i>
+            )}
+            {group == "Small Group Travel" && (
+              <i class="fas fa-users fa-2x" title={group}></i>
+            )}
+          </li>
+        </ul>
         <p>{numberToUSD(price)}</p>
         {added.indexOf(JSON.stringify(id)) != -1 ? (
           <button
