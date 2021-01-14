@@ -1,5 +1,6 @@
 .icon i, .icon h1 {
     position: fixed;
+    z-index: 20;
 }
 .icon h1 {
     top: 57%;
@@ -15,10 +16,24 @@
     cursor: pointer
 }
 .icon:hover{
+    z-index: 20;
     opacity: .7
-
 }
-
 .hide{
     display: none
 }
+
+@media only screen and (max-width: 1200px) and (min-width: 400px) {
+    .icon h1 {
+       top: 91%;
+        bottom: 1% !important;
+        left: 49% !important;
+        right: 40% !important
+    }
+    .icon i {
+       top: 85%;
+        bottom: 0 !important;
+        left: 43% !important;
+        right: 47% !important
+    }
+} 

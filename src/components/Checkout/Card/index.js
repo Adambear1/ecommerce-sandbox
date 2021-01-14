@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { numberToUSD } from "../../../utils";
 import "./styles.css";
-function Card({ title, thumbnailUrl, setAdded, added, id }) {
+function Card({
+  title,
+  thumbnailUrl,
+  price,
+  setAdded,
+  added,
+  id,
+  total,
+  setTotal,
+}) {
+  useEffect(() => setTotal([...total, price]), []);
   return (
     <div class="card checkout-card float-right">
       <div class="row">
@@ -10,14 +21,13 @@ function Card({ title, thumbnailUrl, setAdded, added, id }) {
         <div class="col-sm-7">
           <div class="card-block">
             <p>{title}</p>
+            <p>{numberToUSD(price)}</p>
             <a
               href="#"
               class="btn btn-danger btn-sm float-right"
               id={id}
               onClick={() => {
                 let newArr = added.filter((item) => {
-                  console.log(item);
-                  console.log(id);
                   return +item !== +id;
                 });
                 setAdded(newArr);

@@ -1,6 +1,7 @@
 import React from "react";
+import { numberToUSD } from "../../../utils";
 import "./styles.css";
-function Card({ id, title, url, thumbnailUrl, setAdded, added }) {
+function Card({ id, title, url, thumbnailUrl, setAdded, added, price }) {
   return (
     <div class="card" style={{ width: "18rem" }} key={id} id={id}>
       <a href={url} target="_blank">
@@ -13,12 +14,18 @@ function Card({ id, title, url, thumbnailUrl, setAdded, added }) {
       </a>
       <div class="card-body">
         <p class="card-body">{title}</p>
+        <p>{numberToUSD(price)}</p>
         {added.indexOf(JSON.stringify(id)) != -1 ? (
           <button
             type="button"
             class="btn btn-success"
             title="Item Already Added To Cart"
-            disabled={true}
+            onClick={() => {
+              let newArr = added.filter((item) => {
+                return +item !== +id;
+              });
+              setAdded(newArr);
+            }}
           >
             <i class="fas fa-check"></i>
           </button>
