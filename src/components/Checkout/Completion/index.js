@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import ShippingBilling from "./../ShippingBilling";
+import React from "react";
 
-function Completion() {
-  const [open, setOpen] = useState(false);
+function Completion({ stageValue, setStageValue }) {
+  console.log(stageValue);
   return (
     <>
-      <ShippingBilling open={open} setOpen={setOpen} />
       <button
         type="btn"
         className="btn btn-success"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          stageValue === "Cart" && setStageValue("Billing");
+          stageValue === "Billing" && setStageValue("Shipping");
+          stageValue === "Shipping" && setStageValue("Review");
+          stageValue === "Review" && setStageValue("Confirmation");
+        }}
       >
-        Check Out!
+        {stageValue !== "Confirmation" ? "Next!" : "Complete Order!"}
       </button>
     </>
   );

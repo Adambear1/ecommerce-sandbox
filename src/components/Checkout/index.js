@@ -1,10 +1,24 @@
-import React from "react";
-import { numberToUSD } from "../../utils";
+import React, { useState } from "react";
+
 import Completion from "./Completion";
-import Card from "./Card";
 import "./styles.css";
+import Cart from "./Cart";
+import Billing from "./Billing";
+import Review from "./Review";
 function Checkout({ open, setOpen, posts, added, setAdded }) {
-  let total = [];
+  const [stageValue, setStageValue] = useState("Cart");
+  const [stage, setStage] = useState({
+    Cart: (
+      <Cart
+        posts={posts}
+        added={added}
+        setAdded={setAdded}
+        setStageValue={setStageValue}
+      />
+    ),
+    Billing: <Billing />,
+    Review: <Review />,
+  });
   return (
     <>
       {open === true && (
@@ -13,46 +27,8 @@ function Checkout({ open, setOpen, posts, added, setAdded }) {
             <span class="close" onClick={() => setOpen(false)}>
               &times;
             </span>
-            <h3 className="mt-5">Checkout</h3>
-            <p className="mt-3">
-              {posts &&
-                posts.map(
-                  (
-                    {
-                      title,
-                      thumbnailUrl,
-                      price,
-                      country,
-                      promotion,
-                      duration,
-                      group,
-                    },
-                    index
-                  ) => {
-                    if (added.includes(JSON.stringify(index + 1))) {
-                      total.push(price);
-                      return (
-                        <>
-                          <Card
-                            title={title}
-                            thumbnailUrl={thumbnailUrl}
-                            price={price}
-                            country={country}
-                            promotion={promotion}
-                            duration={duration}
-                            group={group}
-                            setAdded={setAdded}
-                            added={added}
-                            id={index + 1}
-                          />
-                        </>
-                      );
-                    }
-                  }
-                )}
-            </p>
-            <h3>Total: {numberToUSD(total.reduce((a, b) => a + b, 0))}</h3>
-            <Completion />
+            {stage[stageValue]}
+            <Completion setStageValue={setStageValue} stageValue={stageValue} />
           </div>
         </div>
       )}
