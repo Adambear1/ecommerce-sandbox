@@ -18,6 +18,7 @@ function Container() {
   const [added, setAdded] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const [stageValue, setStageValue] = useState("Cart");
   useEffect(() => {
     API.getData().then(({ data }) => {
       let newData = data.map((item) => {
@@ -61,13 +62,21 @@ function Container() {
       <div className="container mt-5" id="photos">
         <div class="row mt-3">
           <SearchBar setSearch={setSearch} />
-          <Cart added={added} open={open} setOpen={setOpen} />
+          <Cart
+            added={added}
+            open={open}
+            setOpen={setOpen}
+            setStageValue={setStageValue}
+            stageValue={stageValue}
+          />
           <Checkout
             open={open}
             setOpen={setOpen}
             posts={posts}
             added={added}
             setAdded={setAdded}
+            stageValue={stageValue}
+            setStageValue={setStageValue}
           />
           {search === ""
             ? currentPosts.map(

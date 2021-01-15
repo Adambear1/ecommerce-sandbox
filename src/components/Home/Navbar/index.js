@@ -22,7 +22,7 @@ function Navbar() {
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          {/* <li class="nav-item">
             <a class="nav-link">
               <Link
                 activeClass="active"
@@ -72,7 +72,7 @@ function Navbar() {
                 Moderate
               </Link>
             </a>
-          </li>
+          </li> */}
           <li className="nav-item" onClick={() => setOpen(true)}>
             <a className="nav-link">Subscribe</a>
           </li>

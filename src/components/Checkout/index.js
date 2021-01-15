@@ -1,13 +1,23 @@
 import React, { useState } from "react";
-
-import Completion from "./Completion";
+import Confetti from "react-confetti";
+import Next from "./Next";
 import "./styles.css";
 import Cart from "./Cart";
 import Billing from "./Billing";
 import Review from "./Review";
-function Checkout({ open, setOpen, posts, added, setAdded }) {
-  const [stageValue, setStageValue] = useState("Cart");
-  const [stage, setStage] = useState({
+import Shipping from "./Shipping";
+import Confirmation from "./Confirmation";
+import Back from "./Back";
+function Checkout({
+  open,
+  setOpen,
+  posts,
+  added,
+  setAdded,
+  stageValue,
+  setStageValue,
+}) {
+  let stage = {
     Cart: (
       <Cart
         posts={posts}
@@ -17,18 +27,42 @@ function Checkout({ open, setOpen, posts, added, setAdded }) {
       />
     ),
     Billing: <Billing />,
-    Review: <Review />,
-  });
+    Shipping: <Shipping />,
+    Review: <Review posts={posts} added={added} />,
+    Confirmation: <Confirmation />,
+  };
+
   return (
     <>
       {open === true && (
-        <div class="checkout-modal">
-          <div class="checkout-modal-content">
-            <span class="close" onClick={() => setOpen(false)}>
+        <div className="checkout-modal">
+          <div className="checkout-modal-content">
+            <span className="close" onClick={() => setOpen(false)}>
               &times;
             </span>
+            {stageValue === "Confirmation" && (
+              <Confetti
+                width={2000}
+                height={1000}
+                numberOfPieces={1000}
+                wind={0.02}
+              />
+            )}
             {stage[stageValue]}
-            <Completion setStageValue={setStageValue} stageValue={stageValue} />
+            <div className="container">
+              <div className="row">
+                <div className="col-6">
+                  <Back
+                    setStageValue={setStageValue}
+                    stageValue={stageValue}
+                    setOpen={setOpen}
+                  />
+                </div>
+                <div className="col-6">
+                  <Next setStageValue={setStageValue} stageValue={stageValue} />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
