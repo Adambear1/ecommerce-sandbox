@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Confetti from "react-confetti";
+import React from "react";
 import { numberToUSD } from "../../utils";
+import Completion from "./Completion";
 import Card from "./Card";
 import "./styles.css";
 function Checkout({ open, setOpen, posts, added, setAdded }) {
-  const [complete, setComplete] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      complete === true && window.location.reload();
-    }, 5000);
-  }, [complete]);
   let total = [];
-  const { outerHeight, outerWidth } = window;
   return (
     <>
       {open === true && (
@@ -59,21 +52,7 @@ function Checkout({ open, setOpen, posts, added, setAdded }) {
                 )}
             </p>
             <h3>Total: {numberToUSD(total.reduce((a, b) => a + b, 0))}</h3>
-            <button
-              type="btn"
-              className="btn btn-success"
-              onClick={() => setComplete(true)}
-            >
-              Check Out!
-            </button>
-            {complete && (
-              <>
-                <Confetti width={outerWidth - 10} height={outerHeight + 100} />
-                <p className="text-success">
-                  Congrats! Your order has been completed!
-                </p>
-              </>
-            )}
+            <Completion />
           </div>
         </div>
       )}

@@ -81,28 +81,14 @@ function Form() {
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="firstName"
-                  placeholder=""
-                  value=""
-                  required=""
-                />
+                <input type="text" class="form-control" id="firstName" />
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Last name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="lastName"
-                  placeholder=""
-                  value=""
-                  required=""
-                />
+                <input type="text" class="form-control" id="lastName" />
                 <div class="invalid-feedback">Valid last name is required.</div>
               </div>
             </div>
@@ -118,9 +104,8 @@ function Form() {
                   class="form-control"
                   id="username"
                   placeholder="Username"
-                  required=""
                 />
-                <div class="invalid-feedback" style="width: 100%;">
+                <div class="invalid-feedback" styles={{ width: "100%" }}>
                   Your username is required.
                 </div>
               </div>
@@ -148,7 +133,6 @@ function Form() {
                 class="form-control"
                 id="address"
                 placeholder="1234 Main St"
-                required=""
               />
               <div class="invalid-feedback">
                 Please enter your shipping address.
@@ -170,12 +154,8 @@ function Form() {
             <div class="row">
               <div class="col-md-5 mb-3">
                 <label for="country">Country</label>
-                <select
-                  class="custom-select d-block w-100"
-                  id="country"
-                  required=""
-                >
-                  <option value="">Choose...</option>
+                <select class="custom-select d-block w-100" id="country">
+                  <option>Choose...</option>
                   <option>United States</option>
                 </select>
                 <div class="invalid-feedback">
@@ -184,12 +164,8 @@ function Form() {
               </div>
               <div class="col-md-4 mb-3">
                 <label for="state">State</label>
-                <select
-                  class="custom-select d-block w-100"
-                  id="state"
-                  required=""
-                >
-                  <option value="">Choose...</option>
+                <select class="custom-select d-block w-100" id="state">
+                  <option>Choose...</option>
                   <option>California</option>
                 </select>
                 <div class="invalid-feedback">
@@ -198,13 +174,7 @@ function Form() {
               </div>
               <div class="col-md-3 mb-3">
                 <label for="zip">Zip</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="zip"
-                  placeholder=""
-                  required=""
-                />
+                <input type="text" class="form-control" id="zip" />
                 <div class="invalid-feedback">Zip code required.</div>
               </div>
             </div>
@@ -241,7 +211,6 @@ function Form() {
                   type="radio"
                   class="custom-control-input"
                   checked=""
-                  required=""
                 />
                 <label class="custom-control-label" for="credit">
                   Credit card
@@ -253,7 +222,6 @@ function Form() {
                   name="paymentMethod"
                   type="radio"
                   class="custom-control-input"
-                  required=""
                 />
                 <label class="custom-control-label" for="debit">
                   Debit card
@@ -265,7 +233,6 @@ function Form() {
                   name="paymentMethod"
                   type="radio"
                   class="custom-control-input"
-                  required=""
                 />
                 <label class="custom-control-label" for="paypal">
                   Paypal
@@ -275,25 +242,13 @@ function Form() {
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="cc-name">Name on card</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cc-name"
-                  placeholder=""
-                  required=""
-                />
+                <input type="text" class="form-control" id="cc-name" />
                 <small class="text-muted">Full name as displayed on card</small>
                 <div class="invalid-feedback">Name on card is required</div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cc-number">Credit card number</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cc-number"
-                  placeholder=""
-                  required=""
-                />
+                <input type="text" class="form-control" id="cc-number" />
                 <div class="invalid-feedback">
                   Credit card number is required
                 </div>
@@ -302,24 +257,12 @@ function Form() {
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">Expiration</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cc-expiration"
-                  placeholder=""
-                  required=""
-                />
+                <input type="text" class="form-control" id="cc-expiration" />
                 <div class="invalid-feedback">Expiration date required</div>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">CVV</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cc-cvv"
-                  placeholder=""
-                  required=""
-                />
+                <input type="text" class="form-control" id="cc-cvv" />
                 <div class="invalid-feedback">Security code required</div>
               </div>
             </div>
