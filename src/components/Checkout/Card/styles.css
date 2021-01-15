@@ -1,7 +1,7 @@
 .checkout-card{
-    height: 120px !important
+    height: 100% !important
 }
 .checkout-card img{
-    height: 120px !important;
+    height: 100% !important;
     width: 175px !important;
 }

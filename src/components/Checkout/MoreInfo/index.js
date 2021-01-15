@@ -1,27 +1,15 @@
 import React, { useMemo, useState } from "react";
-import { descriptions } from "../../../utils";
-import API from "../../../utils/API";
 import Pagination from "../../Home/Pagination";
 import "./styles.css";
-function MoreInfo({ moreInfo, setMoreInfo }) {
-  const [photos, setPhotos] = useState("");
-  const [description, setDescription] = useState("");
-  useMemo(() => {
-    if (moreInfo) {
-      API.getPictures(moreInfo).then(({ data }) => {
-        console.log(data);
-        const { results } = data;
-        setPhotos(results);
-      });
-      setDescription(
-        descriptions[0][moreInfo][
-          Math.floor(Math.random() * descriptions[0][moreInfo].length)
-        ]
-      );
-    }
-  }, []);
-  console.log(photos);
-  console.log(description);
+function MoreInfo({
+  moreInfo,
+  setMoreInfo,
+  description,
+  photos,
+  open,
+  setOpen,
+}) {
+  photos = photos || [];
   const [currentPage, setCurrentPage] = useState(1);
   const pageNumbers = [];
   const [postsPerPage] = useState(3);
@@ -35,10 +23,10 @@ function MoreInfo({ moreInfo, setMoreInfo }) {
   }
   return (
     <>
-      {moreInfo !== false && (
+      {open === true && (
         <div class="more-info-modal">
           <div class="more-info-modal-content">
-            <span class="close" onClick={() => setMoreInfo(false)}>
+            <span class="close" onClick={() => setOpen(false)}>
               &times;
             </span>
             <div className="container ">

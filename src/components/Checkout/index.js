@@ -25,7 +25,15 @@ function Checkout({ open, setOpen, posts, added, setAdded }) {
               {posts &&
                 posts.map(
                   (
-                    { title, thumbnailUrl, price, country, duration, group },
+                    {
+                      title,
+                      thumbnailUrl,
+                      price,
+                      country,
+                      promotion,
+                      duration,
+                      group,
+                    },
                     index
                   ) => {
                     if (added.includes(JSON.stringify(index + 1))) {
@@ -37,6 +45,7 @@ function Checkout({ open, setOpen, posts, added, setAdded }) {
                             thumbnailUrl={thumbnailUrl}
                             price={price}
                             country={country}
+                            promotion={promotion}
                             duration={duration}
                             group={group}
                             setAdded={setAdded}
@@ -55,7 +64,7 @@ function Checkout({ open, setOpen, posts, added, setAdded }) {
               className="btn btn-success"
               onClick={() => setComplete(true)}
             >
-              Order!
+              Check Out!
             </button>
             {complete && (
               <>

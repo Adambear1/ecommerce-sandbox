@@ -1,5 +1,5 @@
-/* The more-info-Modal (background) */
-.more-info-modal {
+/* The shipping-billing-Modal (background) */
+.shipping-billing-modal {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -10,13 +10,13 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
-  /* more-info-Modal Content/Box */
-  .more-info-modal-content {
+  /* shipping-billing-Modal Content/Box */
+  .shipping-billing-modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 70%; /* Could be more or less, depending on screen size */
   }
   
   /* The Close Button */
@@ -32,9 +32,4 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
-
-  .img-thumbnail{
-    height: 100px !important;
-    width: 100px !important
   }

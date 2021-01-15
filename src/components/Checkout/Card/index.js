@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { numberToUSD } from "../../../utils";
+import { descriptions, numberToUSD } from "../../../utils";
+import API from "../../../utils/API";
 import MoreInfo from "../MoreInfo";
 import "./styles.css";
 function Card({
@@ -7,15 +8,41 @@ function Card({
   price,
   country,
   duration,
+  promotion,
   group,
   setAdded,
   added,
   id,
 }) {
-  const [moreInfo, setMoreInfo] = useState(false);
+  const [moreInfo, setMoreInfo] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [photos, setPhotos] = useState(null);
+  const [open, setOpen] = useState(false);
+  const renderMoreInfo = (name) => {
+    console.log(name);
+    if (name) {
+      API.getPictures(name).then(({ data }) => {
+        const { results } = data;
+        setPhotos(results);
+      });
+      setDescription(
+        descriptions[0][name][
+          Math.floor(Math.random() * descriptions[0][name].length)
+        ]
+      );
+      setMoreInfo(name);
+    }
+  };
   return (
     <div class="card checkout-card float-right">
-      <MoreInfo moreInfo={moreInfo} setMoreInfo={setMoreInfo} />
+      <MoreInfo
+        open={open}
+        setOpen={setOpen}
+        moreInfo={moreInfo}
+        setMoreInfo={setMoreInfo}
+        description={description}
+        photos={photos}
+      />
       <div class="row">
         <div class="col-sm-5">
           <img class="d-block w-100" src={thumbnailUrl} alt="" />
@@ -28,9 +55,14 @@ function Card({
                 : `You will be traveling to ${country} for ${duration} in a ${group}`}
             </p>
             <p>{numberToUSD(price)}</p>
+            <small class="text-danger">
+              {promotion && "This price wont last long!! "}
+            </small>
+            <br />
+            <br />
             <a
               href="#"
-              class="btn btn-danger btn-sm float-right mx-2"
+              class="btn btn-danger btn-sm float-right mx-2 mb-2"
               id={id}
               onClick={() => {
                 let newArr = added.filter((item) => {
@@ -43,13 +75,14 @@ function Card({
             </a>
             <a
               href="#"
-              class="btn btn-warning btn-sm float-right mx-2"
-              id={id}
-              onClick={() => {
-                setMoreInfo(country);
+              class="btn btn-warning btn-sm float-right mx-2 mb-2"
+              id={country}
+              onClick={(e) => {
+                renderMoreInfo(e.target.id);
+                setOpen(true);
               }}
             >
-              <i class="fas fa-question"></i>
+              <i class="fas fa-question" id={country}></i>
             </a>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { numberToUSD } from "../../../utils";
+
 import "./styles.css";
 function Card({
   id,
@@ -8,12 +9,18 @@ function Card({
   setAdded,
   added,
   price,
+  promotion,
   country,
   duration,
   group,
 }) {
   return (
     <div class="card" style={{ width: "18rem" }} key={id} id={id}>
+      {promotion && (
+        <div class="rightCircle">
+          <h2 class="mt-3">Sale!</h2>
+        </div>
+      )}
       <a href={url} target="_blank">
         <img
           class="card-img-top"

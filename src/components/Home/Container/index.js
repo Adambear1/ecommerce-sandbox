@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { countryArr, durationArr, groupArr, priceArr } from "../../../utils";
+import {
+  countryArr,
+  durationArr,
+  groupArr,
+  priceArr,
+  promotionArr,
+} from "../../../utils";
 import API from "../../../utils/API";
 import Checkout from "../../Checkout";
 import Card from "../Card";
@@ -14,8 +20,9 @@ function Container() {
   const [filteredPosts, setFilteredPosts] = useState([]);
   useEffect(() => {
     API.getData().then(({ data }) => {
-      console.log(priceArr[Math.floor(Math.random() * priceArr.length)]);
       let newData = data.map((item) => {
+        item.promotion =
+          promotionArr[Math.floor(Math.random() * promotionArr.length)];
         item.price = priceArr[Math.floor(Math.random() * priceArr.length)];
         item.country =
           countryArr[Math.floor(Math.random() * countryArr.length)];
@@ -69,6 +76,7 @@ function Container() {
                   title,
                   url,
                   thumbnailUrl,
+                  promotion,
                   price,
                   country,
                   duration,
@@ -82,6 +90,7 @@ function Container() {
                         url={url}
                         price={price}
                         country={country}
+                        promotion={promotion}
                         duration={duration}
                         group={group}
                         thumbnailUrl={thumbnailUrl}
@@ -98,6 +107,7 @@ function Container() {
                   title,
                   url,
                   thumbnailUrl,
+                  promotion,
                   price,
                   country,
                   duration,
@@ -114,6 +124,7 @@ function Container() {
                         duration={duration}
                         group={group}
                         thumbnailUrl={thumbnailUrl}
+                        promotion={promotion}
                         setAdded={setAdded}
                         added={added}
                       />

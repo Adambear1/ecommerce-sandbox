@@ -5,6 +5,7 @@ export const numberToUSD = (x) => {
   });
 };
 
+export const promotionArr = [true, false, false, false, false];
 export const priceArr = [199, 250, 300, 450, 500, 650];
 export const countryArr = [
   "Lebanon",

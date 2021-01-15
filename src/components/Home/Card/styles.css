@@ -1,3 +1,6 @@
+.card {
+    position: relative
+}
 .card-img-top:hover{
     cursor: pointer;
     opacity: 90%
@@ -11,4 +14,24 @@
 .card li {
     display: inline;
     text-decoration: none;
+}
+
+/* Promotion */
+
+/* .box{ 
+    width:200px; 
+    height:300px; 
+    border:1px solid #999; 
+    position:relative; 
+    margin-top:30px; 
+} */
+.rightCircle{ 
+
+    position:absolute; 
+    width:150px; 
+    height:75px; 
+    background:rgb(175, 255, 46); 
+    border: 2px solid black;
+    left: 0px; 
+    top: 0px;
 }
