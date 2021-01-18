@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/sandbox-ecommerce/static/css/main.c5cf3bae.chunk.css",
+    "main.js": "/sandbox-ecommerce/static/js/main.007d2bc7.chunk.js",
+    "main.js.map": "/sandbox-ecommerce/static/js/main.007d2bc7.chunk.js.map",
+    "runtime-main.js": "/sandbox-ecommerce/static/js/runtime-main.d936b09b.js",
+    "runtime-main.js.map": "/sandbox-ecommerce/static/js/runtime-main.d936b09b.js.map",
+    "static/js/2.ee155232.chunk.js": "/sandbox-ecommerce/static/js/2.ee155232.chunk.js",
+    "static/js/2.ee155232.chunk.js.map": "/sandbox-ecommerce/static/js/2.ee155232.chunk.js.map",
+    "index.html": "/sandbox-ecommerce/index.html",
+    "static/css/main.c5cf3bae.chunk.css.map": "/sandbox-ecommerce/static/css/main.c5cf3bae.chunk.css.map",
+    "static/js/2.ee155232.chunk.js.LICENSE.txt": "/sandbox-ecommerce/static/js/2.ee155232.chunk.js.LICENSE.txt",
+    "static/media/styles.css": "/sandbox-ecommerce/static/media/jumbotronImage.fe3e870c.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d936b09b.js",
+    "static/js/2.ee155232.chunk.js",
+    "static/css/main.c5cf3bae.chunk.css",
+    "static/js/main.007d2bc7.chunk.js"
+  ]
+}
