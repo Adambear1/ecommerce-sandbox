@@ -1,0 +1,4 @@
+.valid{
+        border-color: rgba(60, 255, 0, 0.6) !important;
+        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.075), 0 0 8px rgba(60, 255, 0, 0.6) !important;
+}

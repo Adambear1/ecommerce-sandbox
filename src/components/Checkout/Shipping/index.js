@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { isZipCode } from "../../../utils";
 
 function Shipping() {
   const [checked, setChecked] = useState(false);
-
+  const validate = (e) => {
+    e.target.value.length >= 3
+      ? e.target.classList.add("valid")
+      : e.target.classList.remove("valid");
+  };
   return (
     <form>
       <div class="custom-control custom-checkbox">
@@ -50,6 +55,7 @@ function Shipping() {
               <select
                 class="custom-select d-block w-100 form-control"
                 id="country"
+                onChange={(e) => validate(e)}
               >
                 <option>Choose...</option>
                 <option>United States</option>
@@ -61,15 +67,25 @@ function Shipping() {
               <select
                 class="custom-select d-block w-100 form-control"
                 id="state"
+                onChange={(e) => validate(e)}
               >
                 <option>Choose...</option>
                 <option>California</option>
+                <option>Washington</option>
+                <option>New York</option>
+                <option>Texas</option>
+                <option>Florida</option>
               </select>
               <div class="invalid-feedback">Please provide a valid state.</div>
             </div>
             <div class="col-md-3 mb-3">
               <label for="zip">Zip</label>
-              <input type="text" class="form-control" id="zip" />
+              <input
+                type="text"
+                class="form-control"
+                id="zip"
+                onKeyUp={(e) => isZipCode(e)}
+              />
               <div class="invalid-feedback">Zip code required.</div>
             </div>
           </div>

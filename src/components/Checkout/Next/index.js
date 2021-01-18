@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { refreshPage } from "../../../utils";
 
 import "./styles.css";
 function Next({ stageValue, setStageValue }) {

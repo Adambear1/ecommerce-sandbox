@@ -1,4 +1,5 @@
 import React from "react";
+import { refreshPage } from "../../../utils";
 import "./styles.css";
 function Back({ stageValue, setStageValue, setOpen }) {
   return (
@@ -16,7 +17,7 @@ function Back({ stageValue, setStageValue, setOpen }) {
               stageValue === "Billing" && setStageValue("Cart");
               stageValue === "Shipping" && setStageValue("Billing");
               stageValue === "Review" && setStageValue("Shipping");
-              stageValue === "Confirmation" && setOpen(false);
+              stageValue === "Confirmation" && refreshPage();
             }}
           >
             {stageValue !== "Confirmation" ? "Back!" : "Close!"}
